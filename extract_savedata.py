@@ -30,7 +30,7 @@ def save_data(data, name):
 
 
 data = extract_features('data')
-# df = pd.DataFrame()
+df = pd.DataFrame()
 df['pixel'] = list(map(str, data[0]))
 df['labels'] = list(map(int, data[1]))
 df = df.drop_duplicates(subset='pixel')
