@@ -18,8 +18,8 @@ def extract_features(path='data'):
                 data[0] = np.append(data[0], features, axis=0)
                 data[1] += [label for _ in range(features.shape[0])]
 
-    coefficients = np.array([[1] for _ in range(len(data[0]))])
-    data[0] = np.append(data[0], coefficients, axis=1)
+    # coefficients = np.array([[1] for _ in range(len(data[0]))])
+    # data[0] = np.append(data[0], coefficients, axis=1)
 
     return data
 
