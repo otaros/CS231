@@ -16,7 +16,7 @@ binary_mask = cv.bitwise_not(binary_mask)
 
 cv.fastNlMeansDenoising(binary_mask, binary_mask, 35, 10, 25)
 
-binary_mask = cv.erode(binary_mask, (17, 17), iterations=1)
+binary_mask = cv.erode(binary_mask, (21, 21), iterations=3)
 
 binary_mask = cv.bitwise_not(binary_mask)
 
