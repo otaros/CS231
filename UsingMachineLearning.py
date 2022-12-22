@@ -35,7 +35,8 @@ def videoProcesing(model, bg, name='vid-1', model_name='') -> None:
     while cap.isOpened():
         ret, frame = cap.read()
         if ret:
-            frame = cv.GaussianBlur(frame, (0, 0), sigmaX=1, sigmaY=1, borderType=cv.BORDER_DEFAULT)
+            frame = cv.GaussianBlur(
+                frame, (0, 0), sigmaX=1, sigmaY=1, borderType=cv.BORDER_DEFAULT)
             resized_frame = cv.resize(
                 frame, (720, 560), fx=0, fy=0, interpolation=cv.INTER_CUBIC)
             processed_frame = removeGreen(resized_frame, model, bg)
@@ -48,6 +49,7 @@ def videoProcesing(model, bg, name='vid-1', model_name='') -> None:
     cap.release()
     # out.release()
     cv.destroyAllWindows()
+
 
 if __name__ == "__main__":
     fg_num = input("Enter video number:")
