@@ -10,13 +10,13 @@ def removeGreen(fg, bg):
                        fx=0, fy=0, interpolation=cv.INTER_CUBIC)
     b, g, r = fg[:, :, 0], fg[:, :, 1], fg[:, :, 2]
 
-    mask = (g > 90) & (r < g) & (b < g)
+    mask = (g > 70) & (r < g - 30) & (b < g - 30)
     mask[mask == True] = 1
     mask[mask == False] = 0
     mask = ~mask
 
-    mask = skimage.morphology.binary_closing(mask, footprint=np.ones((3, 3)))
-    mask = skimage.morphology.binary_closing(mask, footprint=np.ones((4, 3)))
+    # mask = skimage.morphology.binary_closing(mask, footprint=np.ones((3, 3)))
+    # mask = skimage.morphology.binary_closing(mask, footprint=np.ones((4, 3)))
 
     fg[mask == 0] = bg[mask == 0]
 

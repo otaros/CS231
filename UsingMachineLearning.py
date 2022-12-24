@@ -8,7 +8,7 @@ import pandas as pd
 import sklearn
 
 
-def loadmodel(name='SVC'):
+def loadmodel(name='SGDClassifier'):
     with open(f'./model/{name}.pickle', 'rb') as f:
         model = pickle.load(f)
     return model

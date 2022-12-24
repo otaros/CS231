@@ -11,17 +11,9 @@ def removeGreen(fg, bg):
 
     A = lab[:, :, 1]
     thresh = cv.threshold(A, 0, 255, cv.THRESH_BINARY+cv.THRESH_OTSU)[1]
-    blur = cv.GaussianBlur(thresh, (0, 0), sigmaX=1,
-                           sigmaY=1, borderType=cv.BORDER_DEFAULT)
-    mask = skimage.exposure.rescale_intensity(blur, in_range=(
-        127.5, 255), out_range=(0, 255)).astype(np.uint8)
-
-    result = fg.copy()
-    result = cv.cvtColor(fg, cv.COLOR_BGR2BGRA)
-    result[:, :, 3] = mask
 
     newImg = fg.copy()
-    newImg[mask == 0] = bg[mask == 0]
+    newImg[thresh == 0] = bg[thresh == 0]
 
     return newImg
 
