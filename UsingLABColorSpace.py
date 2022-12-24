@@ -7,10 +7,11 @@ def removeGreen(fg, bg):
     if fg.shape != bg.shape:
         bg = cv.resize(bg, (fg.shape[1], fg.shape[0]),
                        fx=0, fy=0, interpolation=cv.INTER_CUBIC)
-    lab = cv.cvtColor(fg, cv.COLOR_BGR2LAB)
+    lab = cv.cvtColor(fg, cv.COLOR_BGR2LAB)     # Convert to LAB color space
 
     A = lab[:, :, 1]
-    thresh = cv.threshold(A, 0, 255, cv.THRESH_BINARY+cv.THRESH_OTSU)[1]
+    thresh = cv.threshold(A, 0, 255, cv.THRESH_BINARY +
+                          cv.THRESH_OTSU)[1]    # Threshold the A channel
 
     newImg = fg.copy()
     newImg[thresh == 0] = bg[thresh == 0]
